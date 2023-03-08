@@ -1,0 +1,8 @@
+#two ways to generate keys...don't keep a phrase
+
+ssh-keygen -t rsa -b 4096 -m PEM -f jwtRS256.key
+openssl rsa -in jwtRS256.key -pubout -outform PEM -out jwtRS256.key.pub
+
+#second option
+openssl genrsa -out private.pem 2048
+openssl rsa -in private.pem -pubout -out public.pem

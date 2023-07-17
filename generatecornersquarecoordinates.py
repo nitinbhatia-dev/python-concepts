@@ -3,6 +3,7 @@ def generateCoordinates(matrix):
     #for a nxn matrix...generate the coordinates of all the square
     #example 5x5 matrix will have only 1 square with length 5
     #but multiple squares of length 4, 3 and 2
+    #currently this generates only the corner cordinates
     
     matrix_len = len(matrix)
     if matrix_len < 2:
@@ -15,7 +16,7 @@ def generateCoordinates(matrix):
         getCoordinates(i, matrix_len, matrix, result)
         i = i - 1
     
-    print(result)
+    #print(result)
     return result
 
 
@@ -40,4 +41,10 @@ def getCoordinates(square_size, matrix_len, matrix, result):
     return result
 
 if __name__ == "__main__":
-     generateCoordinates([[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5]])
+     matrix = [[1,1,1,4,5],[1,1,1,4,1],[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5]]
+     result = generateCoordinates(matrix)
+     for x in result:
+        res = all(matrix[p[0]][p[1]] == 1 for p in x)
+        #print(res)
+        if res:
+            print(x)
